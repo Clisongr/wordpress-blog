@@ -11,12 +11,3 @@ spec:
     requests:
       storage: 20Gi
 
-# wordpress/wordpress-secret.yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: wordpress-secret
-  namespace: wordpress-blog
-type: Opaque
-data:
-  wordpress-admin-password: d29yZHByZXNzLWFkbWluLXBhc3N3b3Jk

@@ -1,0 +1,24 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: wordpress-blog
+
+resources:
+- namespace.yaml
+- mysql/mysql-pvc.yaml
+- mysql/mysql-deployment.yaml
+- redis/redis-pvc.yaml
+- redis/redis-deployment.yaml
+- wordpress/wordpress-pvc.yaml
+- wordpress/wordpress-deployment.yaml
+- ingress.yaml
+
+secretGenerator:
+- name: mysql-secret
+  literals:
+    - mysql-root-password=your-root-password
+    - mysql-user=wordpress
+    - mysql-password=wordpress123
+- name: wordpress-secret
+  literals:
+    - wordpress-admin-password=your-admin-password
